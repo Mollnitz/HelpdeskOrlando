@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class PickupEvent : UnityEvent<ShootSO> { };
+
+public class DiscardEvent : UnityEvent<ShootSO> { };
 public class EnemyPickupEvent : UnityEvent<GameObject, ShootSO> { };
 
 public class GameManager : MonoBehaviour
 {
-
+    public static DiscardEvent discardEvent;
     public static PickupEvent pickupEvent;
     public static EnemyPickupEvent enemyPickupEvent;
     public static GameManager instance;
@@ -26,7 +28,8 @@ public class GameManager : MonoBehaviour
             //Panic
             DestroyImmediate(gameObject);
         }
-        
+
+        discardEvent = new DiscardEvent();
         pickupEvent = new PickupEvent();
         enemyPickupEvent = new EnemyPickupEvent();
 
@@ -41,9 +44,4 @@ public class GameManager : MonoBehaviour
         playerRef = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

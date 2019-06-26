@@ -32,8 +32,11 @@ public class ShootingManagement : MonoBehaviour
 
             if (Input.GetButtonDown("Fire2"))
             {
+                GameManager.discardEvent.Invoke(carriedWep);
+
                 GameObject wep = GameObject.Instantiate(groundWep, transform.position - (transform.right * 2f), Quaternion.identity);
                 wep.GetComponent<GroundedWep>().so = carriedWep;
+                
                 carriedWep = null;
             }
         }
