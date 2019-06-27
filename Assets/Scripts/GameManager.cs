@@ -10,10 +10,29 @@ public class EnemyPickupEvent : UnityEvent<GameObject, ShootSO> { };
 
 public class GameManager : MonoBehaviour
 {
+    public static UnityEvent winEvent;
     public static DiscardEvent discardEvent;
     public static PickupEvent pickupEvent;
     public static EnemyPickupEvent enemyPickupEvent;
     public static GameManager instance;
+
+    private static int enemySemaphor = 0;
+    public static int EnemySemaphor
+    {
+        set
+        {
+            enemySemaphor = value;
+            if(EnemySemaphor == 0)
+            {
+                winEvent.Invoke();
+            }
+        }
+
+        get
+        {
+            return enemySemaphor;
+        }
+    }
 
     public Transform playerRef;
 
@@ -32,9 +51,10 @@ public class GameManager : MonoBehaviour
         discardEvent = new DiscardEvent();
         pickupEvent = new PickupEvent();
         enemyPickupEvent = new EnemyPickupEvent();
+        winEvent = new UnityEvent();
 
         //Listen for event
-        pickupEvent.AddListener(x => Debug.Log("player picked up weapon"));
+        //pickupEvent.AddListener(x => Debug.Log("player picked up weapon"));
 
     }
 

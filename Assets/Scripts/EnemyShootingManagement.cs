@@ -16,6 +16,8 @@ public class EnemyShootingManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.EnemySemaphor++;
+
         GameManager.enemyPickupEvent.AddListener( (obj, so) =>
         {
             if(obj == gameObject)

@@ -6,6 +6,12 @@ public class EnemyStandardDeath : MonoBehaviour
 {
     private void Start()
     {
-        GetComponent<HealthScript>().deathEvent.AddListener(() => Destroy(this.gameObject));
+        
+        GetComponent<HealthScript>().deathEvent.AddListener(() => {
+            GameManager.EnemySemaphor--;
+            Destroy(this.gameObject);
+            }
+        );
+        
     }
 }
