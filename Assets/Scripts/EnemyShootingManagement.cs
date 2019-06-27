@@ -7,8 +7,13 @@ public class EnemyShootingManagement : MonoBehaviour
     [SerializeField]
     ShootSO weapon;
 
-    [SerializeField][Range(1, 10)]
+    [SerializeField][Range(1f, 10f)]
     float chaseDistance = 4f;
+
+    [SerializeField]
+    [Range(10f, 35f)]
+    float inaccuracy = 15;
+
 
     Rigidbody2D rb2d;
 
@@ -52,7 +57,7 @@ public class EnemyShootingManagement : MonoBehaviour
         {
             yield return new WaitForSeconds(1.5f);
             GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer() , Quaternion.identity);
-            weapon.shootAction(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-15, 15)) * TowardsPlayer() );
+            weapon.Shoot(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-inaccuracy, inaccuracy)) * TowardsPlayer() );
 
             
         }

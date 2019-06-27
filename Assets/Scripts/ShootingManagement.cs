@@ -24,6 +24,14 @@ public class ShootingManagement : MonoBehaviour
             carriedWep = null;
         });
 
+        //Shoot weapon on button input
+        GameManager.shootEvent.AddListener(x =>
+        {
+            GameObject shot = GameObject.Instantiate(x.Shot, transform.position - (transform.right * 1f), Quaternion.identity);
+            x.Shoot(shot.GetComponent<Rigidbody2D>(), -transform.right);
+        });
+
+        
     }
 
     // Update is called once per frame
@@ -33,8 +41,7 @@ public class ShootingManagement : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                GameObject shot = GameObject.Instantiate(carriedWep.Shot, transform.position - (transform.right * 1f), Quaternion.identity);
-                carriedWep.shootAction(shot.GetComponent<Rigidbody2D>(), -transform.right);
+                GameManager.shootEvent.Invoke(carriedWep);
             }
 
             if (Input.GetButtonDown("Fire2"))
