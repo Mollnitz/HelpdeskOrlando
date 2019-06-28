@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Manager;
+using UnityEngine.Events;
+
 public class EnemyShootingManagement : MonoBehaviour
 {
     [SerializeField]
-    ShootSO weapon;
+    public ShootSO weapon;
 
     [SerializeField][Range(1f, 10f)]
     float chaseDistance = 4f;
@@ -14,13 +16,23 @@ public class EnemyShootingManagement : MonoBehaviour
     [Range(10f, 35f)]
     float inaccuracy = 15;
 
-
     Rigidbody2D rb2d;
 
+    internal UnityEvent aboutToFire;
+    internal UnityEvent fired;
+
+    private void Awake()
+    {
+        aboutToFire = new UnityEvent();
+        fired = new UnityEvent();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+
+        
+
         GameManager.EnemySemaphor++;
 
         GameManager.enemyPickupEvent.AddListener( (obj, so) =>
@@ -56,10 +68,12 @@ public class EnemyShootingManagement : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(weapon.FireCooldown - 0.5f);
+            aboutToFire.Invoke();
+            yield return new WaitForSeconds(0.5f);
             GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer() , Quaternion.identity);
             weapon.Shoot(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-inaccuracy, inaccuracy)) * TowardsPlayer() );
-
+            fired.Invoke();
             
         }
     }

@@ -10,7 +10,7 @@ public enum ShootSOSpeed
     fast
 }
 
-[CreateAssetMenu(fileName = "wep", menuName = "Weapon", order = 2)]
+[CreateAssetMenu(fileName = "wep", menuName = "Orlando/Weapon", order = 2)]
 public class ShootSO : ScriptableObject
 {
 
@@ -18,6 +18,9 @@ public class ShootSO : ScriptableObject
     public GameObject Shot;
     public GameObject EnemyShot;
     public Sprite GroundRepresentation;
+
+    [Range(0.8f, 5f)]
+    public float FireCooldown = 1.5f;
 
     public void Shoot(Rigidbody2D rb2d, Vector2 dir)
     {

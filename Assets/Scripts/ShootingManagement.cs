@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Manager;
+using System;
+
 public class ShootingManagement : MonoBehaviour
 {
     [SerializeField]
@@ -9,6 +11,9 @@ public class ShootingManagement : MonoBehaviour
 
     [SerializeField]
     GameObject groundWep;
+
+    bool canFire = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,8 @@ public class ShootingManagement : MonoBehaviour
         //Shoot weapon on button input
         GameManager.shootEvent.AddListener(x =>
         {
+            canFire = false;
+            StartCoroutine(ResetFire(x.FireCooldown));
             GameObject shot = GameObject.Instantiate(x.Shot, transform.position + (transform.up * 1f), Quaternion.identity);
             x.Shoot(shot.GetComponent<Rigidbody2D>(), transform.up);
         });
@@ -34,12 +41,26 @@ public class ShootingManagement : MonoBehaviour
         
     }
 
+    private IEnumerator ResetFire(float fireCooldown)
+    {
+        //This could be expanded to handle buffering inputs.
+        yield return new WaitForSeconds(fireCooldown);
+        if (Input.GetButton("Fire1"))
+        {
+            GameManager.shootEvent.Invoke(carriedWep);
+        }
+        else
+        {
+            canFire = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(carriedWep != null)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && canFire)
             {
                 GameManager.shootEvent.Invoke(carriedWep);
             }

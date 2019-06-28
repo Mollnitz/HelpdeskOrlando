@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using Manager;
 
 namespace Pathfinding {
 	/// <summary>
@@ -30,8 +30,7 @@ namespace Pathfinding {
 
         private void Start()
         {
-            //Cant include manager and get simple ref for some reason.
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = GameManager.instance.playerRef;
         }
 
         void OnDisable () {

@@ -9,6 +9,8 @@ public class KeyboardInput : MonoBehaviour
 
     [Range(3f, 10f)]
     public float speedAmp = 5f;
+
+    bool canFire = true;
     
 
 

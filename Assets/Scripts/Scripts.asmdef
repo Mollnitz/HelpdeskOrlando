@@ -1,6 +1,6 @@
 {
-    "name": "AstarPathfindingProject",
-    "references": [ "Scripts" ],
+    "name": "Scripts",
+    "references": [],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
