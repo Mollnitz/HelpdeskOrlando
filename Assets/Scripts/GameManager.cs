@@ -10,12 +10,15 @@ namespace Manager {
         LevelClear,
         Discard,
         Pickup,
+        PlayerDamage,
+        PlayerHeal,
         EnemyPickup,
         Shoot
     }
 
-    public class PickupEvent : UnityEvent<ShootSO> { };
+    public class FloatEvent : UnityEvent<float> { };
 
+    public class PickupEvent : UnityEvent<ShootSO> { };
     public class ShootEvent : UnityEvent<ShootSO> { };
     public class DiscardEvent : UnityEvent<ShootSO> { };
     public class EnemyPickupEvent : UnityEvent<GameObject, ShootSO> { };
@@ -29,6 +32,10 @@ namespace Manager {
         public static DiscardEvent discardEvent;
         public static PickupEvent pickupEvent;
         public static EnemyPickupEvent enemyPickupEvent;
+
+        public static FloatEvent PlayerDamageEvent;
+        public static FloatEvent PlayerHealEvent;
+
 
         public static GameManager instance;
 
@@ -69,6 +76,10 @@ namespace Manager {
             pickupEvent = new PickupEvent();
             enemyPickupEvent = new EnemyPickupEvent();
             levelClear = new UnityEvent();
+
+            PlayerDamageEvent = new FloatEvent();
+            PlayerHealEvent = new FloatEvent();
+
 
             playerRef = GameObject.FindGameObjectWithTag("Player").transform;
 

@@ -19,6 +19,8 @@ public class ShootSO : ScriptableObject
     public GameObject EnemyShot;
     public Sprite GroundRepresentation;
 
+    public AudioClip sound;
+
     [Range(0.8f, 5f)]
     public float FireCooldown = 1.5f;
 
