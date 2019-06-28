@@ -10,10 +10,6 @@ public class KeyboardInput : MonoBehaviour
     [Range(3f, 10f)]
     public float speedAmp = 5f;
 
-    bool canFire = true;
-    
-
-
     // Start is called before the first frame update
     void Start()
     {
