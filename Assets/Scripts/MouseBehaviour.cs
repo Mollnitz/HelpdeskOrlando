@@ -15,6 +15,6 @@ public class MouseBehaviour : MonoBehaviour
     {
         var camvec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         camvec.z = 0f;
-        transform.rotation = Quaternion.LookRotation(camvec - transform.position, Vector3.up) * Quaternion.Euler(0, 90, 0) ;
+        transform.rotation = Quaternion.LookRotation(camvec - transform.position, Vector3.forward) * Quaternion.Euler(-90, -90, -90) ;
     }
 }

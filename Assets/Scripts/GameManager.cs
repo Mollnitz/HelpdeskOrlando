@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+namespace Manager { 
+
 public enum Events
 {
-    Win,
+    LevelClear,
     Discard,
     Pickup,
     EnemyPickup,
@@ -20,7 +22,7 @@ public class EnemyPickupEvent : UnityEvent<GameObject, ShootSO> { };
 
 public class GameManager : MonoBehaviour
 {
-    public static UnityEvent winEvent;
+    public static UnityEvent levelClear;
 
     public static ShootEvent shootEvent;
 
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
             enemySemaphor = value;
             if(EnemySemaphor == 0)
             {
-                winEvent.Invoke();
+                levelClear.Invoke();
             }
         }
 
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
         discardEvent = new DiscardEvent();
         pickupEvent = new PickupEvent();
         enemyPickupEvent = new EnemyPickupEvent();
-        winEvent = new UnityEvent();
+        levelClear = new UnityEvent();
 
         //Listen for event
         //pickupEvent.AddListener(x => Debug.Log("player picked up weapon"));
@@ -78,5 +80,8 @@ public class GameManager : MonoBehaviour
     {
         playerRef = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
+}
+
 
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Manager;
 public class ShootingManagement : MonoBehaviour
 {
     [SerializeField]
@@ -19,7 +19,7 @@ public class ShootingManagement : MonoBehaviour
         //Throw weapon away on button input.
         GameManager.discardEvent.AddListener(x =>
         {
-            GameObject wep = GameObject.Instantiate(groundWep, transform.position - (transform.right * 2f), Quaternion.identity);
+            GameObject wep = GameObject.Instantiate(groundWep, transform.position + (transform.up * 2f), Quaternion.identity);
             wep.GetComponent<GroundedWep>().so = x;
             carriedWep = null;
         });
@@ -27,8 +27,8 @@ public class ShootingManagement : MonoBehaviour
         //Shoot weapon on button input
         GameManager.shootEvent.AddListener(x =>
         {
-            GameObject shot = GameObject.Instantiate(x.Shot, transform.position - (transform.right * 1f), Quaternion.identity);
-            x.Shoot(shot.GetComponent<Rigidbody2D>(), -transform.right);
+            GameObject shot = GameObject.Instantiate(x.Shot, transform.position + (transform.up * 1f), Quaternion.identity);
+            x.Shoot(shot.GetComponent<Rigidbody2D>(), transform.up);
         });
 
         

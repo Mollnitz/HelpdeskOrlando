@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Manager;
 public class EnemyShootingManagement : MonoBehaviour
 {
     [SerializeField]
@@ -39,6 +39,7 @@ public class EnemyShootingManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Vector2.Distance(GameManager.instance.playerRef.position, transform.position) > chaseDistance)
         {
             rb2d.velocity =  TowardsPlayer();
@@ -47,7 +48,7 @@ public class EnemyShootingManagement : MonoBehaviour
         else
         {
             rb2d.velocity = Vector2.zero;
-        }
+        } */
     }
 
 
