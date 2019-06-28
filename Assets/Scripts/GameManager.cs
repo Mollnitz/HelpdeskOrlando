@@ -16,8 +16,16 @@ namespace Manager {
         Shoot
     }
 
+    public enum GameState
+    {
+        Ambient,
+        Combat,
+        Clear
+    }
+
     public class FloatEvent : UnityEvent<float> { };
 
+    public class GameStateEvent : UnityEvent<GameState> { };
     public class PickupEvent : UnityEvent<ShootSO> { };
     public class ShootEvent : UnityEvent<ShootSO> { };
     public class DiscardEvent : UnityEvent<ShootSO> { };
@@ -36,8 +44,11 @@ namespace Manager {
         public static FloatEvent PlayerDamageEvent;
         public static FloatEvent PlayerHealEvent;
 
+        public static GameStateEvent gameStateChangeEvent;
 
         public static GameManager instance;
+
+        public static GameState gameState = GameState.Ambient;
 
         private static int enemySemaphor = 0;
         public static int EnemySemaphor
@@ -58,6 +69,24 @@ namespace Manager {
         }
 
         public Transform playerRef;
+
+        static Plane[] planes;
+        
+        public static void StartCombat()
+        {
+            if(gameState == GameState.Ambient)
+            {
+                
+                gameState = GameState.Combat;
+                gameStateChangeEvent.Invoke(gameState);
+            }
+
+        }
+
+        public static bool IsVisible(Collider2D col)
+        {
+            return GeometryUtility.TestPlanesAABB(planes, col.bounds);
+        }
 
         private void Awake()
         {
@@ -80,14 +109,25 @@ namespace Manager {
             PlayerDamageEvent = new FloatEvent();
             PlayerHealEvent = new FloatEvent();
 
+            gameStateChangeEvent = new GameStateEvent();
 
             playerRef = GameObject.FindGameObjectWithTag("Player").transform;
 
             //Listen for event
             //pickupEvent.AddListener(x => Debug.Log("player picked up weapon"));
 
+            levelClear.AddListener(() => {
+                gameState = GameState.Clear;
+                gameStateChangeEvent.Invoke(gameState);
+            }
+            );
+
         }
 
+        private void Update()
+        {
+            planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        }
 
     }
 

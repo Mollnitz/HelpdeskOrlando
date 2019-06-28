@@ -68,12 +68,21 @@ public class EnemyShootingManagement : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(weapon.FireCooldown - 0.5f);
-            aboutToFire.Invoke();
-            yield return new WaitForSeconds(0.5f);
-            GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer() , Quaternion.identity);
-            weapon.Shoot(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-inaccuracy, inaccuracy)) * TowardsPlayer() );
-            fired.Invoke();
+            if (GameManager.IsVisible(GetComponent<Collider2D>()) && (Physics2D.Raycast(transform.position, TowardsPlayer(), 10f, LayerMask.GetMask("Obstacles", "IgnorePlayer"))).transform.CompareTag("Player"))
+            {
+                GameManager.StartCombat();
+                yield return new WaitForSeconds(weapon.FireCooldown - 0.5f);
+                aboutToFire.Invoke();
+                yield return new WaitForSeconds(0.5f);
+                GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer(), Quaternion.identity);
+                weapon.Shoot(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-inaccuracy, inaccuracy)) * TowardsPlayer());
+                fired.Invoke();
+            }
+            else
+            {
+                yield return new WaitForSeconds(weapon.FireCooldown);
+            }
+            
             
         }
     }
