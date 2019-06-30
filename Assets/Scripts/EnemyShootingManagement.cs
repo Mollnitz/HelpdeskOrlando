@@ -53,7 +53,8 @@ public class EnemyShootingManagement : MonoBehaviour
     {
         while (true)
         {
-            if (GameManager.IsVisible(GetComponent<Collider2D>()) && (Physics2D.Raycast(transform.position, TowardsPlayer(), 10f, LayerMask.GetMask("Obstacles", "IgnorePlayer"))).transform.CompareTag("Player"))
+            var ray = Physics2D.Raycast(transform.position, TowardsPlayer(), 10f, LayerMask.GetMask("Obstacles", "IgnorePlayer"));
+            if (GameManager.IsVisible(GetComponent<Collider2D>()) && ray.transform != null && (ray).transform.CompareTag("Player"))
             {
                 GameManager.StartCombat();
                 yield return new WaitForSeconds(weapon.FireCooldown - 0.5f);
