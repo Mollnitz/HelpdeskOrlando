@@ -24,6 +24,10 @@ public class ShootSO : ScriptableObject
     [Range(0.8f, 5f)]
     public float FireCooldown = 1.5f;
 
+    [Range(1f, 10f)]
+    public float PointMultiplier = 2f;
+
+
     public void Shoot(Rigidbody2D rb2d, Vector2 dir)
     {
         float multiplier = (float)speed;

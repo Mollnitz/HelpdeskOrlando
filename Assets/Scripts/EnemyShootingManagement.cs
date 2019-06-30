@@ -48,21 +48,6 @@ public class EnemyShootingManagement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if(Vector2.Distance(GameManager.instance.playerRef.position, transform.position) > chaseDistance)
-        {
-            rb2d.velocity =  TowardsPlayer();
-            
-        }
-        else
-        {
-            rb2d.velocity = Vector2.zero;
-        } */
-    }
-
 
     IEnumerator ShootWeapon()
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,6 +32,10 @@ namespace Manager {
     public class DiscardEvent : UnityEvent<ShootSO> { };
     public class EnemyPickupEvent : UnityEvent<GameObject, ShootSO> { };
 
+    public class LOIEvent : UnityEvent<Transform> { };
+
+
+
     public class GameManager : MonoBehaviour
     {
         public static UnityEvent levelClear;
@@ -45,6 +50,11 @@ namespace Manager {
         public static FloatEvent PlayerHealEvent;
 
         public static GameStateEvent gameStateChangeEvent;
+
+        public static LOIEvent LocationOfInterestEvent;
+        List<Transform> LOIList;
+
+        public static FloatEvent PointEvent;
 
         public static GameManager instance;
 
@@ -111,6 +121,15 @@ namespace Manager {
 
             gameStateChangeEvent = new GameStateEvent();
 
+            PointEvent = new FloatEvent();
+
+            LocationOfInterestEvent = new LOIEvent();
+            LOIList = new List<Transform>();
+
+            LocationOfInterestEvent.AddListener(x => {
+                LOIList.Add(x);
+                });
+
             playerRef = GameObject.FindGameObjectWithTag("Player").transform;
 
             //Listen for event
@@ -122,6 +141,27 @@ namespace Manager {
             }
             );
 
+        }
+
+        public static Transform GetTargetFromPool(Transform requester)
+        {
+           
+            if (instance.LOIList.Count > 1) {
+                var target = instance.LOIList.OrderBy(x => Vector3.Distance(x.position, requester.position)).First();
+
+                instance.LOIList.Remove(target);
+                return target;
+            }
+            else if (instance.LOIList.Count == 1)
+            {
+                var target = instance.LOIList.First();
+                instance.LOIList.RemoveAt(0);
+                return target;
+            }
+            else
+            {
+                return instance.playerRef;
+            }
         }
 
         private void Update()

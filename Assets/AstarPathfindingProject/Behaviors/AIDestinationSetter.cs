@@ -30,7 +30,7 @@ namespace Pathfinding {
 
         private void Start()
         {
-            target = GameManager.instance.playerRef;
+            target = GameManager.GetTargetFromPool(transform);
         }
 
         void OnDisable () {
@@ -40,6 +40,10 @@ namespace Pathfinding {
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
 			if (target != null && ai != null) ai.destination = target.position;
+            else if (target == null)
+            {
+                target = GameManager.GetTargetFromPool(transform);
+            }
 		}
 	}
 }

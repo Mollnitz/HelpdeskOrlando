@@ -23,7 +23,6 @@ public class TriggerDoor : MonoBehaviour
         
         if (collision.CompareTag("Player") || collision.CompareTag("Enemy"))
         {
-            Debug.Log(collision.tag + "left");
             GetComponentInParent<DoorScript>().CloseDoor();
             colliders.Remove(collision);
         }
