@@ -3,9 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
+using System.IO;
+using System.Text;
 
 namespace Manager { 
 
+    [DataContract]
+    internal class HighScore
+    {
+        [DataMember]
+        internal string name;
+        [DataMember]
+        internal int score;
+
+        public HighScore(string key, int value)
+        {
+            name = key;
+            score = value;
+        }
+    }
     public enum Events
     {
         LevelClear,
@@ -59,6 +77,8 @@ namespace Manager {
         public static GameManager instance;
 
         public static GameState gameState = GameState.Ambient;
+
+        public Dictionary<string, int> highscores;
 
         private static int enemySemaphor = 0;
         public static int EnemySemaphor
@@ -132,6 +152,7 @@ namespace Manager {
 
             playerRef = GameObject.FindGameObjectWithTag("Player").transform;
 
+            highscores = new Dictionary<string, int>();
             //Listen for event
             //pickupEvent.AddListener(x => Debug.Log("player picked up weapon"));
 
@@ -164,9 +185,11 @@ namespace Manager {
             }
         }
 
+
         private void Update()
         {
             planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+            
         }
 
     }
