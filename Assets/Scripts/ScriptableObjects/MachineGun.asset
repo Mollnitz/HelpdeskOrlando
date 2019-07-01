@@ -16,8 +16,9 @@ MonoBehaviour:
   Shot: {fileID: 553410781139158252, guid: a72480fd57a2f8e4496efa74311621da, type: 3}
   EnemyShot: {fileID: 8540682517056115111, guid: a3f986da2c9affd4d962c07dff0e62f5,
     type: 3}
-  GroundRepresentation: {fileID: 21300000, guid: 157d1cc2193d79d468acd9d290f24766,
+  GroundRepresentation: {fileID: 21300000, guid: 3d155f44de791a845a7b432772df4747,
     type: 3}
   sound: {fileID: 8300000, guid: e5156f9217a088942ba5e9751656eb1e, type: 3}
   FireCooldown: 0.8
   PointMultiplier: 4
+  ShotAmount: 1

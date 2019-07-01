@@ -13,7 +13,7 @@ public class DealDamage : MonoBehaviour
         {
             collision.GetComponent<HealthScript>().TakeDamage(damage);
         }
-        else if (collision.gameObject.layer == LayerMask.GetMask("Obstacles"))
+        else if (LayerMask.GetMask(LayerMask.LayerToName(collision.gameObject.layer)) == LayerMask.GetMask("Obstacles"))
         {
             Destroy(gameObject);
         }

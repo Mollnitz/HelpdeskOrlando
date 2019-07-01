@@ -19,7 +19,7 @@ public class InterfacePlayerSlider : MonoBehaviour
         GameManager.pickupEvent.AddListener(x =>
         {
             SetStateAllChildren(true);
-            slider.maxValue = x.FireCooldown;
+            slider.maxValue = x.so.FireCooldown;
         });
 
         GameManager.shootEvent.AddListener(x =>

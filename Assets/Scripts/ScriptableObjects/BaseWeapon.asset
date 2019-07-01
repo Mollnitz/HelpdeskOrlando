@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13179daef3ccd6f4dac2b6b3bd988c68, type: 3}
   m_Name: BaseWeapon
   m_EditorClassIdentifier: 
+  speed: 1
   Shot: {fileID: 553410781139158252, guid: a72480fd57a2f8e4496efa74311621da, type: 3}
   EnemyShot: {fileID: 8540682517056115111, guid: a3f986da2c9affd4d962c07dff0e62f5,
     type: 3}
   GroundRepresentation: {fileID: 21300000, guid: f492762551cfe2a4a9f928a0bc284578,
     type: 3}
+  sound: {fileID: 0}
+  FireCooldown: 1.5
+  PointMultiplier: 2
+  ShotAmount: 1

@@ -45,7 +45,7 @@ namespace Manager {
     public class FloatEvent : UnityEvent<float> { };
 
     public class GameStateEvent : UnityEvent<GameState> { };
-    public class PickupEvent : UnityEvent<ShootSO> { };
+    public class PickupEvent : UnityEvent<GroundedWep> { };
     public class ShootEvent : UnityEvent<ShootSO> { };
     public class DiscardEvent : UnityEvent<ShootSO> { };
     public class EnemyPickupEvent : UnityEvent<GameObject, ShootSO> { };
@@ -154,7 +154,7 @@ namespace Manager {
 
             highscores = new Dictionary<string, int>();
             //Listen for event
-            //pickupEvent.AddListener(x => Debug.Log("player picked up weapon"));
+            pickupEvent.AddListener(x => LOIList.Remove(x.transform));
 
             levelClear.AddListener(() => {
                 gameState = GameState.Clear;

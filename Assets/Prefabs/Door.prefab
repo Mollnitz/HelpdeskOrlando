@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5433256469954396067}
   - component: {fileID: 5433256469954396069}
   - component: {fileID: 5433256469954396068}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Opener1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5433256470205755891}
   - component: {fileID: 5433256470205755892}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 5433256471050976424}
   - component: {fileID: 5433256471050976423}
   - component: {fileID: 5433256471050976425}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Side1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -176,7 +175,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -237,7 +235,7 @@ GameObject:
   - component: {fileID: 5433256471162918173}
   - component: {fileID: 5433256471162918175}
   - component: {fileID: 5433256471162918174}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Side2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +270,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -284,7 +281,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

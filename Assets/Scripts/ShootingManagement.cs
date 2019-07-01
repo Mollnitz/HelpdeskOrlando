@@ -19,7 +19,7 @@ public class ShootingManagement : MonoBehaviour
     void Start()
     {
         //Equip weapon on pickup
-        GameManager.pickupEvent.AddListener(x => carriedWep = x);
+        GameManager.pickupEvent.AddListener(x => carriedWep = x.so);
 
         //Throw weapon away on button input.
         GameManager.discardEvent.AddListener(x =>

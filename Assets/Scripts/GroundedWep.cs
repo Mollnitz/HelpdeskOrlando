@@ -22,7 +22,7 @@ public class GroundedWep : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //Raise event
-            GameManager.pickupEvent.Invoke(so);
+            GameManager.pickupEvent.Invoke(this);
             Destroy(this.gameObject);
         }
         else if (collision.CompareTag("Enemy"))

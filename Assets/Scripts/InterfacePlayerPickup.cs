@@ -13,7 +13,7 @@ public class InterfacePlayerPickup : MonoBehaviour
     {
         img = GetComponent<Image>();
         GameManager.pickupEvent.AddListener(x => {
-            img.sprite = x.GroundRepresentation;
+            img.sprite = x.so.GroundRepresentation;
             img.color = Color.white;
             }
         );

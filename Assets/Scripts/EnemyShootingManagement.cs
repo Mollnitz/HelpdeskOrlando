@@ -8,9 +8,7 @@ public class EnemyShootingManagement : MonoBehaviour
 {
     [SerializeField]
     public ShootSO weapon;
-
-    [SerializeField][Range(1f, 10f)]
-    float chaseDistance = 4f;
+    
 
     [SerializeField]
     [Range(10f, 35f)]
@@ -60,8 +58,11 @@ public class EnemyShootingManagement : MonoBehaviour
                 yield return new WaitForSeconds(weapon.FireCooldown - 0.5f);
                 aboutToFire.Invoke();
                 yield return new WaitForSeconds(0.5f);
-                GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer(), Quaternion.identity);
-                weapon.Shoot(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-inaccuracy, inaccuracy)) * TowardsPlayer());
+                for (int i = 0; i < weapon.ShotAmount; i++)
+                {
+                    GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer(), Quaternion.identity);
+                    weapon.Shoot(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-inaccuracy, inaccuracy)) * TowardsPlayer());
+                }
                 fired.Invoke();
             }
             else

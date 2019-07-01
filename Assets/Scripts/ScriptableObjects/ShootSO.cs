@@ -27,6 +27,8 @@ public class ShootSO : ScriptableObject
     [Range(1f, 10f)]
     public float PointMultiplier = 2f;
 
+    [Range(1,5)]
+    public int ShotAmount = 1;
 
     public void Shoot(Rigidbody2D rb2d, Vector2 dir)
     {
