@@ -9,9 +9,13 @@ public class DealDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") || collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Enemy"))
         {
             collision.GetComponent<HealthScript>().TakeDamage(damage);
+        }
+        else if (collision.gameObject.layer == LayerMask.GetMask("Obstacles"))
+        {
+            Destroy(gameObject);
         }
     }
 }

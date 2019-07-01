@@ -21,6 +21,8 @@ public class EnemyShootingManagement : MonoBehaviour
     internal UnityEvent aboutToFire;
     internal UnityEvent fired;
 
+    IEnumerator shootRoutine;
+
     private void Awake()
     {
         aboutToFire = new UnityEvent();
@@ -30,9 +32,6 @@ public class EnemyShootingManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        
-
         GameManager.EnemySemaphor++;
 
         GameManager.enemyPickupEvent.AddListener( (obj, so) =>
@@ -40,6 +39,7 @@ public class EnemyShootingManagement : MonoBehaviour
             if(obj == gameObject)
             {
                 weapon = so;
+                StopAllCoroutines();
                 StartCoroutine(ShootWeapon());
             }
         });
