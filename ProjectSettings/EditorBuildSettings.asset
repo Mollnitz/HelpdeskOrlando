@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/COPYME.unity
     guid: 47f3dc7d981389a49b9187e5379f52b2
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: a5096d6e5e8d4ca48853b33e571cf643
   m_configObjects: {}

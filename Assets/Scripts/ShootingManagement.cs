@@ -13,6 +13,7 @@ public class ShootingManagement : MonoBehaviour
     GameObject groundWep;
 
     bool canFire = true;
+    private float inaccuracy = 15f;
 
 
     // Start is called before the first frame update
@@ -34,8 +35,18 @@ public class ShootingManagement : MonoBehaviour
         {
             canFire = false;
             StartCoroutine(ResetFire(x.FireCooldown));
-            GameObject shot = GameObject.Instantiate(x.Shot, transform.position + (transform.up * 1f), Quaternion.identity);
-            x.Shoot(shot.GetComponent<Rigidbody2D>(), transform.up);
+
+            
+            //Multishot
+
+            for (int i = 0; i < x.ShotAmount; i++)
+            {
+                Quaternion mutation = i == 0 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(-inaccuracy, inaccuracy));
+                GameObject shot = GameObject.Instantiate(x.Shot, transform.position + (transform.up * 1f), transform.rotation);
+                x.Shoot(shot.GetComponent<Rigidbody2D>(), mutation * transform.up);
+                
+            }
+            
         });
 
         

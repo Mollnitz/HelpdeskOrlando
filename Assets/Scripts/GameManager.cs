@@ -86,6 +86,7 @@ namespace Manager {
             set
             {
                 enemySemaphor = value;
+                Debug.Log(enemySemaphor);
                 if(EnemySemaphor == 0)
                 {
                     levelClear.Invoke();

@@ -60,7 +60,7 @@ public class EnemyShootingManagement : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 for (int i = 0; i < weapon.ShotAmount; i++)
                 {
-                    GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer(), Quaternion.identity);
+                    GameObject shot = GameObject.Instantiate(weapon.EnemyShot, transform.position + TowardsPlayer(), Quaternion.LookRotation(GameManager.instance.playerRef.position - transform.position, Vector3.forward) * Quaternion.Euler(-90f, -90f, -90f));
                     weapon.Shoot(shot.GetComponent<Rigidbody2D>(), Quaternion.Euler(0f, 0f, Random.Range(-inaccuracy, inaccuracy)) * TowardsPlayer());
                 }
                 fired.Invoke();

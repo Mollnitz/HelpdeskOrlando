@@ -11,6 +11,8 @@ public class Grenade : MonoBehaviour
 
     private Collider2D myCollider;
 
+    public GameObject explosion;
+
     private IEnumerator Start()
     {
         //Cache our collider
@@ -33,6 +35,11 @@ public class Grenade : MonoBehaviour
 
     private void Detonate()
     {
+
+        GameObject temp = Instantiate(explosion, transform.position, Quaternion.Euler(0f,0f,Random.Range(-90f,90f)));
+
+        Destroy(temp, 1f);
+
         //Runs for each collider within range of the grenade.
         foreach(var hit in Physics2D.OverlapCircleAll(transform.position, range))
         {

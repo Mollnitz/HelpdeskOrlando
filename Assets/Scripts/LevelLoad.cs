@@ -7,6 +7,10 @@ public class LevelLoad : MonoBehaviour
     public string target;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(target);
+        if(collision.CompareTag("Player"))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(target);
+        }
+        
     }
 }

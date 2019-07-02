@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 873ce57f22611ce4399f45ef79606647, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37e390468a6aa2c488be8ec987aa3c2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,3 +148,5 @@ MonoBehaviour:
   damage: 20
   detonationTime: 4
   range: 2
+  explosion: {fileID: 3748247117289071972, guid: 806d6ad695cef68448677eac8ffd3291,
+    type: 3}

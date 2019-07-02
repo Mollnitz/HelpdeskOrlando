@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551545904}
   - component: {fileID: 1551545906}
-  - component: {fileID: 1551545905}
+  - component: {fileID: 5282778290097075694}
   m_Layer: 5
   m_Name: HealthSlider
   m_TagString: Untagged
@@ -182,10 +182,10 @@ RectTransform:
   m_Father: {fileID: 2242813276608478243}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0.65, y: 0.5}
-  m_AnchorMax: {x: 0.65, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 50, y: 20}
+  m_AnchorMin: {x: 0.9, y: 0.5}
+  m_AnchorMax: {x: 0.9, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 150, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551545906
 MonoBehaviour:
@@ -239,7 +239,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1551545905
+--- !u!114 &5282778290097075694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551545903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ee26f516a0cf4c4ebde00cc414ecf28, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b48868042a579d42854f1786fc0f37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1675711769
@@ -356,10 +356,10 @@ RectTransform:
   m_Father: {fileID: 2242813276190637216}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.37, y: 0.5}
-  m_AnchorMax: {x: 0.39, y: 0.5}
-  m_AnchoredPosition: {x: 59, y: 0}
-  m_SizeDelta: {x: 107, y: 86}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -25, y: 0}
+  m_SizeDelta: {x: 114, y: 180}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2242813275631853169
 CanvasRenderer:
@@ -403,11 +403,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: d2b3879e9c927c34ea6573ba9fdeef66, type: 3}
-    m_FontSize: 60
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 75
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -448,10 +448,10 @@ RectTransform:
   m_Father: {fileID: 2242813276608478243}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.1}
-  m_AnchorMax: {x: 0.1, y: 0.1}
+  m_AnchorMin: {x: 0.25, y: 0.5}
+  m_AnchorMax: {x: 0.25, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2242813276065090228
 CanvasRenderer:
@@ -688,10 +688,10 @@ RectTransform:
   m_Father: {fileID: 2242813276608478243}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0.9, y: 0.5}
-  m_AnchorMax: {x: 0.9, y: 0.5}
+  m_AnchorMin: {x: 0.65, y: 0.5}
+  m_AnchorMax: {x: 0.65, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 20}
+  m_SizeDelta: {x: 150, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2242813276822438961
 MonoBehaviour:
@@ -921,10 +921,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

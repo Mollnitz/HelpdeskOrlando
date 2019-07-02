@@ -6,25 +6,37 @@ public class EnemyStandardDeath : MonoBehaviour
 {
     [SerializeField] [Range(500f, 1500f)]
     float PointWorth = 1000f;
+
+    private bool died = false;
+
     private void Start()
     {
         
         GetComponent<HealthScript>().deathEvent.AddListener(() => {
-            GameManager.EnemySemaphor--;
-
-            if(GetComponent<EnemyShootingManagement>().weapon == null)
+            if (!died)
             {
-                GameManager.PointEvent.Invoke(PointWorth);
+                died = true;
             }
             else
             {
-                GameManager.PointEvent.Invoke(PointWorth * GetComponent<EnemyShootingManagement>().weapon.PointMultiplier);
+                return;
             }
-             
+                
+            Debug.Log(gameObject.name);
+            
 
-            Destroy(this.gameObject);
+            if(GetComponent<EnemyShootingManagement>().weapon == null)
+            {
+                GameManager.EnemySemaphor--;
+                GameManager.PointEvent.Invoke(PointWorth);
+                Destroy(this.gameObject);
             }
-        );
-        
+            else
+            {
+                GameManager.EnemySemaphor--;
+                GameManager.PointEvent.Invoke(PointWorth * GetComponent<EnemyShootingManagement>().weapon.PointMultiplier);
+                Destroy(this.gameObject);
+            }
+            });
     }
 }
