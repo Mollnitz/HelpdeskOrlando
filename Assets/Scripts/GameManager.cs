@@ -137,6 +137,8 @@ namespace Manager {
             enemyPickupEvent = new EnemyPickupEvent();
             levelClear = new UnityEvent();
 
+            enemySemaphor = 0;
+
             PlayerDamageEvent = new FloatEvent();
             PlayerHealEvent = new FloatEvent();
 
