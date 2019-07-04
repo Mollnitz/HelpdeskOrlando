@@ -169,7 +169,16 @@ namespace Manager {
 
         public static Transform GetTargetFromPool(Transform requester)
         {
-           
+
+            //Simple clause that makes enemies chase player if they have a weapon.
+            if(requester.GetComponent<EnemyShootingManagement>() != null)
+            {
+                if(requester.GetComponent<EnemyShootingManagement>().weapon != null)
+                {
+                    return instance.playerRef;
+                }
+            }
+
             if (instance.LOIList.Count > 1) {
                 var target = instance.LOIList.OrderBy(x => Vector3.Distance(x.position, requester.position)).First();
 
